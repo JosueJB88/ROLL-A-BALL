@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class JugadorController : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class JugadorController : MonoBehaviour
 	public float velocidad;
 	
 	private int contador;
+	
+	public TextMeshProUGUI textoContador, textoGanar;
 
 	
 	void Start () {
@@ -17,6 +21,11 @@ public class JugadorController : MonoBehaviour
 		rb = GetComponent<Rigidbody>();
 		
 		contador = 0;
+		
+		setTextoContador();
+		
+		
+			textoGanar.text = "";
 	}
 	
 	
@@ -54,10 +63,20 @@ public class JugadorController : MonoBehaviour
 		 other.gameObject.SetActive (false);
 		 
 		 contador = contador + 1;
+		 
+		 
+		 setTextoContador();
 	 }
+ 
  }
-
-	
+ 
+ void setTextoContador(){
+	  textoContador.text = "Contador: " + contador.ToString();
+	 if (contador >= 12){
+		 textoGanar.text = "¡Ganaste!";
+	 }
+	 
+ }
 }
 
 
