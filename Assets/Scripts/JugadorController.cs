@@ -14,6 +14,10 @@ public class JugadorController : MonoBehaviour
 	private int contador;
 	
 	public TextMeshProUGUI textoContador, textoGanar;
+	
+	public AudioSource audio;
+	
+	public GameObject  boton;
 
 	
 	void Start () {
@@ -62,6 +66,8 @@ public class JugadorController : MonoBehaviour
 	 {
 		 other.gameObject.SetActive (false);
 		 
+		 audio.Play();
+		 
 		 contador = contador + 1;
 		 
 		 
@@ -74,6 +80,9 @@ public class JugadorController : MonoBehaviour
 	  textoContador.text = "Contador: " + contador.ToString();
 	 if (contador >= 12){
 		 textoGanar.text = "¡Ganaste!";
+		 
+		 boton.gameObject.SetActive (true);
+		 
 	 }
 	 
  }
